@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keerthi Priya Mudarakola | AI & ML Portfolio</title>
+  <meta name="description" content="B.Tech AI & ML graduate specializing in Generative AI, RAG, Machine Learning, and data-driven solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a26;
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b8;
+      --accent-1: #7c3aed; /* violet */
+      --accent-2: #06b6d4; /* cyan */
+      --accent-3: #ec4899; /* pink */
+      --accent-4: #10b981; /* emerald */
+      --gradient-main: linear-gradient(135deg, #7c3aed 0%, #06b6d4 50%, #ec4899 100%);
+      --gradient-card: linear-gradient(145deg, rgba(124,58,237,0.15), rgba(6,182,212,0.08));
+      --shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.3);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    .bg-effects {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .bg-effects::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%);
+      top: -200px;
+      left: -100px;
+      animation: float 18s ease-in-out infinite;
+    }
+    .bg-effects::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 70%);
+      bottom: -150px;
+      right: -100px;
+      animation: float 22s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(40px, 30px); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s ease;
+    }
+    nav.scrolled {
+      padding: 0.7rem 2rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-primary);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-main);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero-content {
+      max-width: 900px;
+      width: 100%;
+    }
+    .hero-welcome {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #22d3ee;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(90deg, #7c3aed 0%, #06b6d4 45%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+      font-weight: 600;
+      color: #f0f0f5;
+      line-height: 1.35;
+      margin-bottom: 1.75rem;
+    }
+    .hero-desc {
+      color: #a0a0b8;
+      font-size: 1.05rem;
+      max-width: 720px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.7;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #d1d5db;
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.25s;
+    }
+    .hero-pill:hover {
+      background: rgba(124,58,237,0.2);
+      border-color: rgba(124,58,237,0.45);
+      color: #c4b5fd;
+    }
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .hero-roles {
+      margin-top: 2.75rem;
+      text-align: center;
+    }
+    .hero-roles-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+    .hero-roles-list {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      font-weight: 600;
+      color: #c4b5fd;
+      letter-spacing: 0.02em;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gradient-main);
+      color: white;
+      box-shadow: 0 8px 25px -5px rgba(124, 58, 237, 0.5);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px -5px rgba(124, 58, 237, 0.6);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-primary);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      transition: all 0.3s;
+    }
+    .social-links a:hover {
+      background: var(--accent-1);
+      color: white;
+      border-color: var(--accent-1);
+      transform: translateY(-3px);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .section-header h2 span {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* About / Education */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .about-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+    .about-card:hover {
+      border-color: rgba(124,58,237,0.3);
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+    .about-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .about-card h3 i {
+      color: var(--accent-2);
+    }
+    .edu-item {
+      margin-bottom: 1.25rem;
+    }
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+    .edu-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .edu-school {
+      color: var(--accent-2);
+      font-weight: 500;
+      margin: 0.25rem 0;
+    }
+    .edu-meta {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .cgpa {
+      display: inline-block;
+      background: rgba(16,185,129,0.15);
+      color: #34d399;
+      padding: 0.2rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.4rem;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.3s;
+    }
+    .skill-category:hover {
+      border-color: rgba(6,182,212,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -10px rgba(6,182,212,0.25);
+    }
+    .skill-category h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .skill-category h3 i {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .cat-lang h3 i { background: rgba(124,58,237,0.2); color: #a78bfa; }
+    .cat-ai h3 i { background: rgba(6,182,212,0.2); color: #22d3ee; }
+    .cat-gen h3 i { background: rgba(236,72,153,0.2); color: #f472b6; }
+    .cat-tools h3 i { background: rgba(16,185,129,0.2); color: #34d399; }
+    .cat-soft h3 i { background: rgba(251,191,36,0.2); color: #fbbf24; }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .skill-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.25s;
+    }
+    .skill-tag:hover {
+      background: rgba(124,58,237,0.2);
+      border-color: rgba(124,58,237,0.4);
+      color: #c4b5fd;
+      transform: scale(1.05);
+    }
+
+    /* Experience */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), var(--accent-3));
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 11px;
+      top: 6px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 3px solid var(--accent-1);
+      z-index: 1;
+    }
+    .timeline-content {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.3s;
+    }
+    .timeline-content:hover {
+      border-color: rgba(124,58,237,0.35);
+      box-shadow: var(--shadow);
+    }
+    .timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .timeline-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .timeline-company {
+      color: var(--accent-2);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .timeline-date {
+      background: rgba(124,58,237,0.15);
+      color: #c4b5fd;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .timeline-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .timeline-content li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .timeline-content li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+      font-weight: bold;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.75rem;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(236,72,153,0.35);
+      box-shadow: 0 20px 40px -15px rgba(236, 72, 153, 0.3);
+    }
+    .project-header {
+      height: 140px;
+      background: var(--gradient-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(6,182,212,0.3), rgba(236,72,153,0.4));
+      opacity: 0.7;
+    }
+    .project-icon {
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+      color: white;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    .project-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .project-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .tag-rag { background: rgba(124,58,237,0.2); color: #c4b5fd; }
+    .tag-ml { background: rgba(6,182,212,0.2); color: #67e8f9; }
+    .tag-nlp { background: rgba(236,72,153,0.2); color: #f9a8d4; }
+    .tag-web { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .project-year {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent-2);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: gap 0.25s;
+    }
+    .project-link:hover {
+      gap: 0.7rem;
+      color: #22d3ee;
+    }
+
+    /* Certificates */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.3s;
+    }
+    .cert-card:hover {
+      border-color: rgba(16,185,129,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(16,185,129,0.25);
+    }
+    .cert-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(16,185,129,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #34d399;
+      flex-shrink: 0;
+    }
+    .cert-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .cert-org {
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .cert-date {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    /* Contact */
+    .contact-section {
+      text-align: center;
+    }
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-main);
+    }
+    .contact-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-card p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .contact-link:hover {
+      background: var(--accent-1);
+      border-color: var(--accent-1);
+      transform: translateY(-3px);
+    }
+    .contact-link i {
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10,10,15,0.98);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero {
+        padding-top: 7rem;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline::before {
+        left: 12px;
+      }
+      .timeline-item {
+        padding-left: 45px;
+      }
+      .timeline-dot {
+        left: 3px;
+      }
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-effects"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo">Keerthi Priya</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-welcome">Hello, Welcome to my Portfolio 👋</p>
+      <h1>Hi, I'm <span class="grad">Keerthi Priya</span></h1>
+      <p class="hero-tagline">
+        Turning Data into Insights.<br>
+        Building Intelligence with AI.
+      </p>
+      <p class="hero-desc">
+        I'm an Artificial Intelligence and Machine Learning graduate passionate about Data Analytics, Data Science, and Generative AI. With hands-on experience in Python, SQL, Power BI, Machine Learning, and LLM-based applications, I enjoy analyzing data, building predictive models, and developing intelligent AI-powered solutions.
+      </p>
+      <div class="hero-pills">
+        <span class="hero-pill">Python</span>
+        <span class="hero-pill">SQL</span>
+        <span class="hero-pill">Power BI</span>
+        <span class="hero-pill">Machine Learning</span>
+        <span class="hero-pill">Generative AI</span>
+        <span class="hero-pill">RAG & LLMs</span>
+        <span class="hero-pill">AI Agents</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> View Projects
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Get in Touch
+        </a>
+      </div>
+      <div class="hero-roles">
+        <p class="hero-roles-label">Open to entry-level opportunities in</p>
+        <p class="hero-roles-list">Data Analyst &nbsp;|&nbsp; Data Scientist &nbsp;|&nbsp; AI/ML Engineer &nbsp;|&nbsp; Generative AI Developer</p>
+      </div>
+      <div class="social-links" style="justify-content: center; margin-top: 2rem;">
+        <a href="https://www.linkedin.com/in/keerthi-priya-mudarakola-733222272/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/keerthipriy" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:keerthimudarakola069@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-header fade-up">
+      <h2>About <span>Me</span></h2>
+      <p>Education and background that shaped my AI journey</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card fade-up">
+        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+        <div class="edu-item">
+          <div class="edu-title">Bachelor of Technology in Artificial Intelligence and Machine Learning</div>
+          <div class="edu-school">Sai Spurthi Institute of Technology, Sathupally</div>
+          <div class="edu-meta">2021 – 2025 · Sathupally, India</div>
+          <div class="cgpa">CGPA: 7.89 / 10</div>
+        </div>
+      </div>
+      <div class="about-card fade-up">
+        <h3><i class="fas fa-map-marker-alt"></i> Location & Contact</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+          Based in <strong style="color: var(--text-primary);">Sathupally, Telangana</strong>
+        </p>
+        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">
+          <i class="fas fa-phone" style="color: var(--accent-2); margin-right: 0.5rem;"></i>
+          +91 8919726699
+        </p>
+        <p style="color: var(--text-secondary);">
+          <i class="fas fa-envelope" style="color: var(--accent-2); margin-right: 0.5rem;"></i>
+          keerthimudarakola069@gmail.com
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-header fade-up">
+      <h2>Skills & <span>Expertise</span></h2>
+      <p>Technologies and tools I work with every day</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category cat-lang fade-up">
+        <h3><i class="fas fa-code"></i> Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-category cat-ai fade-up">
+        <h3><i class="fas fa-brain"></i> AI / ML</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Deep Learning</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">Data Preprocessing</span>
+          <span class="skill-tag">Model Development</span>
+        </div>
+      </div>
+      <div class="skill-category cat-gen fade-up">
+        <h3><i class="fas fa-magic"></i> Generative AI</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Large Language Models</span>
+          <span class="skill-tag">RAG</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">LangChain</span>
+        </div>
+      </div>
+      <div class="skill-category cat-tools fade-up">
+        <h3><i class="fas fa-tools"></i> Libraries & Tools</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">Matplotlib</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-category cat-soft fade-up">
+        <h3><i class="fas fa-users"></i> Soft Skills</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Problem Solving</span>
+          <span class="skill-tag">Analytical Thinking</span>
+          <span class="skill-tag">Teamwork</span>
+          <span class="skill-tag">Adaptability</span>
+          <span class="skill-tag">Communication</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-header fade-up">
+      <h2>Work <span>Experience</span></h2>
+      <p>Hands-on internships building real AI solutions</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-title">Data Science with Generative AI Intern</div>
+              <div class="timeline-company">Innomatics Research Labs</div>
+            </div>
+            <span class="timeline-date">May 2026</span>
+          </div>
+          <ul>
+            <li>Developed Machine Learning and Generative AI applications using Python and LLM-based techniques, contributing to practical AI solution pipelines.</li>
+            <li>Performed data preprocessing, analysis, and visualization using Pandas, NumPy, and Matplotlib.</li>
+            <li>Built AI-powered solutions leveraging prompt engineering and explored end-to-end LLM workflows including retrieval and generation stages.</li>
+            <li>Worked with SQL, Power BI, and ML/DL models to support data-driven decision making and process automation initiatives.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-title">Agentic AI Intern</div>
+              <div class="timeline-company">Innomatics Research Labs</div>
+            </div>
+            <span class="timeline-date">Dec 2025 – Feb 2026</span>
+          </div>
+          <ul>
+            <li>Completed intensive internship training with hands-on exposure to Generative AI, Large Language Models, LangChain, Streamlit, and AI agent development frameworks.</li>
+            <li>Gained practical experience in building agentic workflows and integrating LLMs into interactive applications.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-header fade-up">
+      <h2>Featured <span>Projects</span></h2>
+      <p>Real-world AI applications I've built and shipped</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <i class="fas fa-shield-alt project-icon"></i>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-rag">RAG</span>
+            <span class="project-tag tag-nlp">NLP</span>
+            <span class="project-tag tag-ml">LLM</span>
+          </div>
+          <h3 class="project-title">Hate Speech Recognition</h3>
+          <p class="project-desc">
+            Retrieval-Augmented Generation (RAG) based system for accurate hate speech identification and classification. Combines retrieval of relevant context with generative models to improve detection robustness and reduce false positives. Full pipeline: preprocessing → embedding retrieval → LLM reasoning.
+          </p>
+          <div class="project-footer">
+            <span class="project-year">2026</span>
+            <a href="https://hatespeechrecognitionapp-9zbexxgx9rlz5k9axjxwqb.streamlit.app/" target="_blank" rel="noopener" class="project-link">Live Demo <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <i class="fas fa-seedling project-icon"></i>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-ml">Machine Learning</span>
+            <span class="project-tag tag-web">Prediction</span>
+          </div>
+          <h3 class="project-title">Crop Yield Prediction</h3>
+          <p class="project-desc">
+            Machine learning model that predicts crop yields based on multiple agricultural and environmental features. Applied rigorous data preprocessing, feature engineering, and model selection. Evaluated multiple algorithms and identified key factors influencing agricultural yield outcomes.
+          </p>
+          <div class="project-footer">
+            <span class="project-year">2026</span>
+            <a href="https://github.com/keerthipriy/Crop_Yielding_prediction.git" target="_blank" rel="noopener" class="project-link">GitHub <i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <i class="fas fa-laptop-code project-icon"></i>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-nlp">NLP</span>
+            <span class="project-tag tag-web">Web</span>
+            <span class="project-tag tag-rag">AI Tool</span>
+          </div>
+          <h3 class="project-title">AI-Generated Portfolio from Resume</h3>
+          <p class="project-desc">
+            AI-powered tool that automatically generates professional portfolio websites from resume content using NLP techniques. Intelligent parsing extracts skills, projects, experience, and education into organized web sections. Responsive interface that dramatically reduces manual portfolio creation time.
+          </p>
+          <div class="project-footer">
+            <span class="project-year">2026</span>
+            <a href="https://ai-generated-portfolio-website-from-resume-xjrl7rvlpj2j8qnupop.streamlit.app/" target="_blank" rel="noopener" class="project-link">Live Demo <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <i class="fas fa-database project-icon"></i>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-ml">SQL</span>
+            <span class="project-tag tag-web">Data Analysis</span>
+          </div>
+          <h3 class="project-title">World Wide Energy Consumption</h3>
+          <p class="project-desc">
+            SQL-based data analysis project exploring global energy consumption patterns. Involves complex queries, data aggregation, and insights generation from worldwide energy datasets to support data-driven understanding of consumption trends.
+          </p>
+          <div class="project-footer">
+            <span class="project-year">2026</span>
+            <a href="https://github.com/keerthipriy/World_Wide_Energy_Consumption-SQL.git" target="_blank" rel="noopener" class="project-link">GitHub <i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <i class="fas fa-chart-bar project-icon"></i>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag tag-web">Power BI</span>
+            <span class="project-tag tag-ml">DAX</span>
+            <span class="project-tag tag-rag">ETL</span>
+          </div>
+          <h3 class="project-title">BlinkIt Sales Performance Dashboard</h3>
+          <p class="project-desc">
+            Interactive Power BI dashboard analyzing BlinkIt sales performance. Includes data modeling with DAX, ETL processes, and visual insights into sales trends, product performance, and key business metrics for decision support.
+          </p>
+          <div class="project-footer">
+            <span class="project-year">2026</span>
+            <a href="https://github.com/keerthipriy/BlinkIt_Sales_Performance_Dashboard-Power-BI-DAX-ETL-.git" target="_blank" rel="noopener" class="project-link">GitHub <i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section id="certificates">
+    <div class="section-header fade-up">
+      <h2>Certificates & <span>Achievements</span></h2>
+      <p>Industry-recognized credentials</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card fade-up">
+        <div class="cert-icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div class="cert-content">
+          <h3>NASSCOM Certification</h3>
+          <div class="cert-org">NASSCOM</div>
+          <div class="cert-date">March 2026</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.6rem;">
+            Industry-recognized certification demonstrating proficiency in key technology and professional competencies aligned with industry standards.
+          </p>
+          <a href="https://lnkd.in/p/dkSdP7as" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.6rem; color:var(--accent-2); font-size:0.85rem; font-weight:600; text-decoration:none;">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+      <div class="cert-card fade-up">
+        <div class="cert-icon">
+          <i class="fas fa-award"></i>
+        </div>
+        <div class="cert-content">
+          <h3>Data Science with Generative AI</h3>
+          <div class="cert-org">Innomatics Research Labs</div>
+          <div class="cert-date">May 2026</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.6rem;">
+            Comprehensive training covering Machine Learning, Generative AI, LLMs, data pipelines, model building, prompt engineering, and deploying AI solutions.
+          </p>
+          <a href="https://lnkd.in/p/dapszMYQ" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.6rem; color:var(--accent-2); font-size:0.85rem; font-weight:600; text-decoration:none;">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+      <div class="cert-card fade-up">
+        <div class="cert-icon">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="cert-content">
+          <h3>Agentic AI Certification</h3>
+          <div class="cert-org">Innomatics Research Labs</div>
+          <div class="cert-date">2026</div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.6rem;">
+            Hands-on certification in Agentic AI, covering AI agent development, LangChain workflows, LLM integration, and building autonomous agentic systems.
+          </p>
+          <a href="https://lnkd.in/p/dtgvnBWQ" target="_blank" rel="noopener" style="display:inline-block; margin-top:0.6rem; color:var(--accent-2); font-size:0.85rem; font-weight:600; text-decoration:none;">
+            View Certificate <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <div class="contact-card fade-up">
+      <h2>Let's Build Something <span style="background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Amazing</span></h2>
+      <p>
+        Looking for a passionate entry-level professional in Data Science, Data Analytics, or AI/ML? Let's connect! I'm eager to contribute my skills in Python, SQL, Power BI, Machine Learning, and Generative AI to solve real-world problems and create meaningful impact. 
+
+  Have an opportunity or an exciting project in mind? Let's work together. Reach out to me today!
+      </p>
+      <div class="contact-links">
+        <a href="mailto:keerthimudarakola069@gmail.com" class="contact-link">
+          <i class="fas fa-envelope"></i> Email Me
+        </a>
+        <a href="https://www.linkedin.com/in/keerthi-priya-mudarakola-733222272/" target="_blank" rel="noopener" class="contact-link">
+          <i class="fab fa-linkedin-in"></i> LinkedIn
+        </a>
+        <a href="https://github.com/keerthipriy" target="_blank" rel="noopener" class="contact-link">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="tel:+918919726699" class="contact-link">
+          <i class="fas fa-phone"></i> Call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Designed & built with ❤️ by <a href="#home">Keerthi Priya Mudarakola</a> · 2026</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const link = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+        if (link) {
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+    });
+
+    // Fade-up animation on scroll
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
